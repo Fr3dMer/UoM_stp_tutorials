@@ -17,8 +17,8 @@ pipreqs --force .
 ```
 
 Plan 
-- [ ] Create logging module
-- [ ] Create arg parser
+- [x] Create logging module
+- [x] Create arg parser
 - [ ] Tests for Exercise 1 
 - [ ] Exercise 1
 - [ ] Tests for Exercise 2 

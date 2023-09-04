@@ -6,6 +6,7 @@ Author        : Freddie Mercer
 *************************************************************************************************"""
 
 import support.log as log_obj
+import support.cli as cli
 
 
 # Main entry into programme, scaffold for logic 
@@ -16,9 +17,11 @@ def main():
     logger.log("This is a log message.")
 
     # Process args 
-
-
-    # Construct exercise 1 object and execute associated problems 
+    arg_parser = cli.myArgumentParser()
+    args = arg_parser.parse_args()
+    print(args.input)
+    
+    # Construct exercise 1 object and execute associated problems  
 
 
     # Construct exercise 2 object and execute associated problems 
