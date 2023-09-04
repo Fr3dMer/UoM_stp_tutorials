@@ -5,13 +5,15 @@ Author        : Freddie Mercer
     
 *************************************************************************************************"""
 
+import support.log as log_obj
 
 
 # Main entry into programme, scaffold for logic 
 def main():
     
-    # Initialise logging object
-
+    # Create a logger object
+    logger = log_obj.myLogger()
+    logger.log("This is a log message.")
 
     # Process args 
 
@@ -30,3 +32,7 @@ def main():
 
     # Exit main
     return True
+
+
+if __name__ == "__main__":
+    main()
