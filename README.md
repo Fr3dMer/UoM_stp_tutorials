@@ -1,5 +1,7 @@
 # STP tutorial problems 
 
+Most code will be writen by ChatGPT-3.5 
+
 # Download and install dependencies in conda env
 ```bash
 git clone --branch "main" "https://github.com/Fr3dMer/UoM_stp_tutorials.git" 
