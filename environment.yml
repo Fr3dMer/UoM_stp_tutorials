@@ -1,6 +1,0 @@
-name: stp_tutorials
-channels:
-  - conda-forge
-  - bioconda
-dependencies:
-  - python==3.10.10
