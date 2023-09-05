@@ -32,7 +32,7 @@ Plan
 - [ ] Tests for Exercise 1 
 - [x] Exercise 1
 - [ ] Tests for Exercise 2 
-- [ ] Exercise 2
+- [x] Exercise 2
 - [ ] Tests for Exercise 3 
 - [ ] Exercise 3
 - [ ] Tests for Exercise 4 

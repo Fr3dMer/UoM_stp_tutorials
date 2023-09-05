@@ -2,7 +2,6 @@
 File          : main.py
 About         : Entry point into the program to tie everything together
 Author        : Freddie Mercer
-    
 *************************************************************************************************"""
 
 import support.log as log_obj
@@ -32,7 +31,6 @@ def main():
     if (args.ex2):
         exer2 = ex2.exercise2(args.ex2)
         exer2.execute(logger)
-
 
     # Construct exercise 3 object and execute associated problems 
 
