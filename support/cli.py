@@ -13,8 +13,8 @@ class myArgumentParser:
 
     def add_arguments(self):
         # Define your command-line arguments here
-        self.parser.add_argument('--input', help='Input file path', required=True)
-        self.parser.add_argument('--output', help='Output file path', required=True)
+        self.parser.add_argument('--input', help='Input file path', required=False)
+        self.parser.add_argument('--ex1', type=str, help='Which exercise 1 problems would you like running?', required=False)
         self.parser.add_argument('--verbose', action='store_true', help='Enable verbose mode')
 
     def parse_args(self):
@@ -31,8 +31,3 @@ if __name__ == "__main__":
     output_file = args.output
     verbose_mode = args.verbose
 
-    # Perform actions based on the parsed arguments
-    print(f"Input file: {input_file}")
-    print(f"Output file: {output_file}")
-    if verbose_mode:
-        print("Verbose mode enabled")
