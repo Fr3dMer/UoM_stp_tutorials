@@ -18,6 +18,7 @@ class exercise1:
         self.ex1_2 = "ex1.2"
         self.ex1_3 = "ex1.3"
         self.ex1_4 = "ex1.4"
+        self.ex1_5 = "ex1.5"
         
         
         
@@ -31,6 +32,11 @@ class exercise1:
         
         self.ex1_3_a = 50 
         self.ex1_3_b = 100
+        
+        self.ex1_4_sequence = "GCTGAGACTTCCTGGACGGGGGACAGGCTGTGGGGTTTCTCAGATAACTGGGCCCCTGCGCTCAGGAGGCCTTCACCCTCTGCTCTGGGTAAAGTTCATTGGAACAGAAAGAAATGGATTTATCTGCTCTTCGCGTTGAAGAAGTACAAAATGTCATTAATGCTATGCAGAAAATCTTAGAGTGTCCCATCTGTCTGGAGTTGATCAAGGAACCTGTCTCCACAAAGTGTGACCACATATTTTGCAAATTTTGCATGCTGAAACTTCTCAACCAGAAGAAAGGGCCTTCACAGTGTCCTTTATGTAAGAATGATATAACCAAAAGGAGCCTACAAGAAAGTACGAGATTTGAT"   
+        self.ex1_4_block_size = 10
+        
+        self.ex1_5_dna_sequence = "aggagtaagcccttgcaactggaaatacacccattg"
         
         
     def execute(self,logger):
@@ -49,7 +55,15 @@ class exercise1:
             message = self.ex1_3 + " Answer: " + str(output)
             logger.log(message)
 
-
+        if (self.ex1_4 in self.clean_args):
+            output = self.print_dna_in_blocks(self.ex1_4_sequence,self.ex1_4_block_size)
+            message = self.ex1_4 + " Answer: " + str(output)
+            logger.log(message)
+        
+        if (self.ex1_5 in self.clean_args):
+            output = self.transcribe_dna_to_rna(self.ex1_5_dna_sequence)
+            message = self.ex1_5 + " Answer: " + str(output)
+            logger.log(message)
 
     # Solving the actual problems themselves 
     def calculate_hypotenuse_square(self,a, b):
@@ -76,3 +90,16 @@ class exercise1:
             if num % 2 != 0:  # Check if the number is odd
                 total += num
         return total
+    
+    def print_dna_in_blocks(self,dna_sequence, block_size):
+        result = ''
+        for i in range(0, len(dna_sequence), block_size):
+            block = dna_sequence[i:i + block_size]
+            result += block + ' '
+        return result.strip()
+
+    def transcribe_dna_to_rna(self,dna_sequence):
+        rna_sequence = dna_sequence.replace("t", "u")
+        return rna_sequence
+    
+    

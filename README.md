@@ -1,6 +1,6 @@
 # STP tutorial problems 
 
-Most code will be writen by ChatGPT-3.5 
+I'll try to get chatGPT to write most code
 
 # Download and install dependencies in conda env
 ```bash
@@ -20,7 +20,7 @@ Plan
 - [x] Create logging module
 - [x] Create arg parser
 - [ ] Tests for Exercise 1 
-- [ ] Exercise 1
+- [x] Exercise 1
 - [ ] Tests for Exercise 2 
 - [ ] Exercise 2
 - [ ] Tests for Exercise 3 
