@@ -23,33 +23,60 @@ class exercise2:
         
         
         # Conditions for each problem:
+        self.ex2_1_dna_sequence = "GCTGAGACTTCCTGGACGGGGGACAGGCTGTGGGGTTTCTCAGATAACTGGGCCCCTGCGCTCAGGAGGCCTTCACCCTCTGCTCTGGGTAAAGTTCATTGGAACAGAAAGAAATGGATTTATCTGCTCTTCGCGTTGAAGAAGTACAAAATGTCATTAATGCTATGCAGAAAATCTTAGAGTGTCCCATCTGTCTGGAGTTGATCAAGGAACCTGTCTCCACAAAGTGTGACCACATATTTTGCAAATTTTGCATGCTGAAACTTCTCAACCAGAAGAAAGGGCCTTCACAGTGTCCTTTATGTAAGAATGATATAACCAAAAGGAGCCTACAAGAAAGTACGAGATTTAGTCAACTTGTTGAAGAGCTATTGAAAATCATTTGTGCTTTTCAGCTTGACACAGGTTTGGAGTATGCAAACAGCTATAATTTTGCAAAAAAGGAAAATAACTCTCCTGAACATCTAAAAGATGAAGTTTCTATCATCCAAAGTATGGGCTACAGAAACCGTGCCAAAAGACTTCTACAGAGTGAACCCGAAAATCCTTCCTTGCAGGAAACCAGTCTCAGTGTCCAACTCTCTAACCTTGGAACTGTGAGAACTCTGAGGACAAAGCAGCGGATACAACCTCAAAAGACGTCTGTCTACATTGAATTGGGATCTGATTCTTCTGAAGATACCGTTAATAAGGCAACTTATTGCAGTGTGGGAGATCAAG"
 
         
         
     def execute(self,logger):
         if (self.ex2_1 in self.clean_args):
-            output = self.calculate_hypotenuse_square(self.ex1_1_a,self.ex1_1_b)
+            output = self.format_genbank(self.ex2_1_dna_sequence)
             message = self.ex2_1 + " Answer: " + str(output)
             logger.log(message)
             
-        if (self.ex2_2 in self.clean_args):
-            output = self.extract_slices(self.ex1_2_input_string,self.ex1_2_pair1,self.ex1_2_pair2)
-            message = self.ex2_2 + " Answer: " + str(output)
-            logger.log(message)
 
-        if (self.ex2_3 in self.clean_args):
-            output = self.sum_odd_integers(self.ex1_3_a,self.ex1_3_b)
-            message = self.ex2_3 + " Answer: " + str(output)
-            logger.log(message)
-
-        if (self.ex2_4 in self.clean_args):
-            output = self.print_dna_in_blocks(self.ex1_4_sequence,self.ex1_4_block_size)
-            message = self.ex2_4 + " Answer: " + str(output)
-            logger.log(message)
-        
-        if (self.ex2_5 in self.clean_args):
-            output = self.transcribe_dna_to_rna(self.ex1_5_dna_sequence)
-            message = self.ex2_5 + " Answer: " + str(output)
-            logger.log(message)
 
     # Solving the actual problems themselves 
+    def format_genbank(self,dna_sequence, accession_number=None, source=None, organism=None, description=None):
+        genbank_format = f"\nLOCUS       {accession_number}  {len(dna_sequence)} bp\n"
+    
+
+        dna_sequence = dna_sequence.lower()
+
+    
+        if description:
+            genbank_format += f"DEFINITION  {description}\n"
+    
+        if source:
+            genbank_format += f"SOURCE      {source}\n"
+    
+        if organism:
+            genbank_format += f"  ORGANISM  {organism}\n"
+    
+        # Add features and sequence data sections if needed (not implemented in this example).
+    
+        genbank_format += f"ORIGIN\n"
+        
+    
+        # Split the DNA sequence into lines of 60 characters each, as per GenBank format.
+        for i in range(0, len(dna_sequence), 60):
+            
+            # ChatGPT fell down here and I had to add the bellow code to split blocks into 10
+            genbank_format += f"{i + 1:9} "
+            
+            spliceA = i                
+            spliceB = i + 10
+            
+            for x in range(6):
+                
+                genbank_format += f"{dna_sequence[spliceA:spliceB]} "
+                
+                spliceA += 10
+                spliceB += 10
+
+                
+                
+            genbank_format += "\n"
+    
+        genbank_format += "//\n"
+    
+        return genbank_format
