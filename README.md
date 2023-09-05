@@ -1,7 +1,7 @@
 # STP tutorial problems 
 
 
-My goal here is to see how ChatGPT can be applied to these tutorial problems. I have created the main.py structure and the general class structures, witht he goal of ChatGPT filling in the rest. The chat bot began to strugle as the requirments got more complicated, especially problem ex2.3.
+My goal is to apply ChatGPT to these tutorial problems. I created the main.py structure and the general class structures, with the goal of ChatGPT filling in the rest. Cli,log and exercise1 was simple to fill in. As I moved into exercise2, I found chatGPT needed improved imput. As the problemz increased in complexity I found needed to break the problems into manageable chunks before ChatGPT could complete them.
 
 
 # Run the script
