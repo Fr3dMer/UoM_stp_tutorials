@@ -19,6 +19,7 @@ class exercise2:
         self.ex2_3 = "ex2.3"
         self.ex2_4 = "ex2.4"
         self.ex2_5 = "ex2.5"
+        self.ex2_6 = "ex2.6"
         
         
         
@@ -28,6 +29,12 @@ class exercise2:
         self.ex2_2_sequence = "AGGAGTAAGCCCTTGCAACTGGAAATACACCCATTG"
         
         self.ex2_3_sequence = "aggagtaagcccttgcaactggaaatacacccattg"
+        
+        self.ex2_4_sequence = "aggagtaagcccttgcaactggaaatacacccattg"
+        
+        self.ex2_5_sequence = "aggagtaagcccttgcaactggaaatacacccattg"
+        
+        self.ex2_6_sequence = "aggagtaagcccttgcaactggaaatacacccattg"
         
     def execute(self,logger):
         if (self.ex2_1 in self.clean_args):
@@ -44,10 +51,22 @@ class exercise2:
             output = self.reverse_complement(self.ex2_3_sequence)
             message = self.ex2_3 + " Answer: " + str(output)
             logger.log(message)
+        
+        if (self.ex2_4 in self.clean_args):
+            output = self.translation_reversal(self.ex2_4_sequence)
+            message = self.ex2_4 + " Answer: " + str(output)
+            logger.log(message)
+        
+        if (self.ex2_5 in self.clean_args):
+            output = self.count_nucleotides(self.ex2_5_sequence)
+            message = self.ex2_5 + " Answer: " + str(output)
+            logger.log(message)
             
-
-
-
+        if (self.ex2_6 in self.clean_args):
+            output = self.calculate_gc_content(self.ex2_6_sequence)
+            message = self.ex2_6 + " Answer: " + str(output)
+            logger.log(message)
+            
 
     # Solving the actual problems themselves 
     def format_genbank(self,dna_sequence, accession_number=None, source=None, organism=None, description=None):
@@ -143,3 +162,62 @@ class exercise2:
 
         return ''.join(reverse_comp_seq)
 
+
+    def translation_reversal(self,dna_sequence):
+        
+        dna_sequence = dna_sequence.upper()
+        
+        forward_frame1 = self.translate_dna_to_amino_acids(dna_sequence)
+        forward_frame2 = self.translate_dna_to_amino_acids(dna_sequence[1:])
+        forward_frame3 = self.translate_dna_to_amino_acids(dna_sequence[2:])
+
+        reverse_complement = self.reverse_complement(dna_sequence)
+        reverse_complement = reverse_complement.upper()
+        reverse_frame1 = self.translate_dna_to_amino_acids(reverse_complement)
+        reverse_frame2 = self.translate_dna_to_amino_acids(reverse_complement[1:])
+        reverse_frame3 = self.translate_dna_to_amino_acids(reverse_complement[2:])
+        
+        return "\nForward\n1 "+ forward_frame1 + "\n2 " + forward_frame2 + "\n3 " + forward_frame3 + "\nReverse\n1 " + reverse_frame1 +"\n2 "+ reverse_frame2 +"\n3 " + reverse_frame3
+
+    def count_nucleotides(self,sequence):
+        # Initialize dictionaries to store counts
+        single_nucleotide_counts = {'a': 0, 't': 0, 'c': 0, 'g': 0}
+        di_nucleotide_counts = {}
+        tri_nucleotide_counts = {}
+
+        # Iterate over the sequence to count nucleotides
+        for i in range(len(sequence)):
+            # Count single nucleotides
+            nucleotide = sequence[i]
+            single_nucleotide_counts[nucleotide] += 1
+
+            # Count di-nucleotides (two adjacent nucleotides)
+            if i < len(sequence) - 1:
+                di_nucleotide = sequence[i:i+2]
+                if di_nucleotide in di_nucleotide_counts:
+                    di_nucleotide_counts[di_nucleotide] += 1
+                else:
+                    di_nucleotide_counts[di_nucleotide] = 1
+
+            # Count tri-nucleotides (three adjacent nucleotides)
+            if i < len(sequence) - 2:
+                tri_nucleotide = sequence[i:i+3]
+                if tri_nucleotide in tri_nucleotide_counts:
+                    tri_nucleotide_counts[tri_nucleotide] += 1
+                else:
+                    tri_nucleotide_counts[tri_nucleotide] = 1
+
+        return single_nucleotide_counts, di_nucleotide_counts, tri_nucleotide_counts
+
+
+    def calculate_gc_content(self,sequence):
+        # Count the number of G and C bases in the sequence
+        gc_count = sequence.count('g') + sequence.count('c')
+
+        # Calculate the total number of bases in the sequence
+        total_bases = len(sequence)
+
+        # Calculate the GC content as a percentage
+        gc_content_percentage = (gc_count / total_bases) * 100
+
+        return gc_content_percentage
