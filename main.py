@@ -2,12 +2,12 @@
 File          : main.py
 About         : Entry point into the program to tie everything together
 Author        : Freddie Mercer
-    
 *************************************************************************************************"""
 
 import support.log as log_obj
 import support.cli as cli
 import support.exercise1 as ex1
+import support.exercise2 as ex2
 
 
 # Main entry into programme, scaffold for logic 
@@ -28,7 +28,9 @@ def main():
         exer1.execute(logger)
 
     # Construct exercise 2 object and execute associated problems 
-
+    if (args.ex2):
+        exer2 = ex2.exercise2(args.ex2)
+        exer2.execute(logger)
 
     # Construct exercise 3 object and execute associated problems 
 

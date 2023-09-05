@@ -13,8 +13,8 @@ class myArgumentParser:
 
     def add_arguments(self):
         # Define your command-line arguments here
-        self.parser.add_argument('--input', help='Input file path', required=False)
         self.parser.add_argument('--ex1', type=str, help='Which exercise 1 problems would you like running?', required=False)
+        self.parser.add_argument('--ex2', type=str, help='Which exercise 2 problems would you like running?', required=False)
         self.parser.add_argument('--verbose', action='store_true', help='Enable verbose mode')
 
     def parse_args(self):
